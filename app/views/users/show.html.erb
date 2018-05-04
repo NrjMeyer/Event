@@ -1,0 +1,53 @@
+<% if logged_in? %>
+<div class='row'>
+<div class="bg-light mt-4 p-5 col-lg-8">
+<h2>La liste des events organisés :</h2> 
+<table class="table table-hover table-striped">
+
+  <thead class="thead-dark">
+    
+    <th>Description</th>
+    <th>Date & Time</th>
+    <th>Place</th>
+    <th>Participant</th>
+    <th>Total</th>
+  </thead>
+    
+  <% current_user.created_events.each do |event| %>
+      <tr>
+        <td><%= event.description %></td>
+        <td><%= event.date%>
+        <td><%= event.place%></td>
+        <td><%= event.attendees.count %></td>
+    </tr>
+  <%end%>
+</table>
+</div>
+</div>
+
+<div class="row">
+<div class="bg-light shadow mt-4 p-5 col-lg-8">
+<h2>La liste des events participés :</h2>
+<table class="table table-dark table-striped">
+  <tr>
+    <th>Description</th>
+    <th>Date & Time</th>
+    <th>Place</th>
+    <th>Participant</th>
+    <th>Total</th>
+  </tr> 
+    <% current_user.attended_events.each do |event| %>
+      <tr>
+        <td><%= event.description %></td>
+        <td><%= event.date%></td>
+        <td><%= event.place%></td>
+        <td><%= event.attendees.count %></td>
+      </tr>
+  <%end%>
+</table> 
+</div>  
+</div>
+
+<%else%>
+<h1>Oups, vous n'êtes pas connecté </h1>
+<%end%>

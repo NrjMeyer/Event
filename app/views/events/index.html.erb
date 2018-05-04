@@ -1,0 +1,23 @@
+<% if logged_in? %>
+<div class="container">
+<table class="table table-striped dark-ligth">
+  <tr>
+    <h1>Voici la liste des évenements<h1>
+    
+    <th>Description</th>
+    <th>Date & Time</th>
+    <th>Place</th>
+    <th>Attendees</th>
+  </tr>
+  
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.description %></td>
+      <td><%= event.date%></td>
+      <td><%= event.place%></td>
+      <td><%= event.attendees.count %></td>
+    </tr>
+  <% end %>
+  <% end %>
+</table>
+</div>
